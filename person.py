@@ -1,3 +1,6 @@
+import time
+import threading
+
 class Character:
     def __init__(self, name, hp, defence, speed, attack_speed, dick=None):
         self.name = name
@@ -49,6 +52,12 @@ class Character:
         return "Character with name: " + self.name + ", dick: " + str(
             self.dick)  # none эта не стринга! сделай стрингой тогда покажет метод str
 
+    def party(self):
+        print('введите трёх персонажей для пати на РБ')
+        print('1 - Воин \n 2- Маг \n 3- Сапорт хиллир \n 4- Танк')
+        # продолжаю обдумывать это дерьмище
+
+
 
 class Warrior(Character):
     def __init__(self, name, hp, defence, speed, power, attack_speed, dick):
@@ -90,14 +99,41 @@ class Saport(Character):
     def scream(self):
         print(">>>накладываю бафы<<<")
 
+    def hill(self, other):
+        for i in range(2):
+            other.hp += self.hill_power
+
+    def baf(self, other):
+        other.defence += 30
+        print(f'{other.name} дарую тебе +30 к защите!')
+        other.attack_speed += 10
+        print(f'{other.name} сейчас бафну и будешь атаковать шустрее, а то как лох.')
+
+    def berserk(self, other):
+        print('Хочешь силу берсерка воин? - она сделает тебя сильнее но ты жертвуешь жизнью...')
+        bers = input('Y=1/N=0 ')                     # ебётся с аргументом Yy d 110 строке когда ставлю проверку (надобы указать тип стринг наверно)
+        if bers == 1 or bers == 0:
+            other.hp -= (100 - 15) * other.hp // 100  # ну такой наивный способ вычесть 15%
+            print('ты лишился 15% НР')
+            other.defence += (100 + 50) * other.defence // 100
+            print('Получил +50% к защите')
+            other.attack_speed += (100 + 15) * other.attack_speed // 100
+
 class Tank(Character):
     def __int__(self, name, hp, defence, speed, attack_speed, power, agression):
         Character.__init__(self, self, name, hp, defence, attack_speed, speed)
         self.power = power
         self.agression = agression
 
+    def stronghold(self):
+        if self.hp <= (100 - 30) * self.hp // 100:
+            self.defence += (100 + 100) * self.hp // 100
+            print('Враг обломает об меня зубы! Я ТВЕРДЫНЯ!')
+
 
 characters = (
     Warrior(name="Тиран", hp=200, defence=100, speed=20, power=25, attack_speed=50, dick=11),
     Mage(name="Arhimage", hp=100, defence=50, speed=15, intellect=100, attack_speed=20),
+    Saport(name="Bishop", hp=50, defence=15, speed=15, attack_speed=10, hill_power=10, baff=10),
+    Tank(name='Василий', hp=500, defence=200, speed=18, attack_speed=20, power=5, agression=1)
 )

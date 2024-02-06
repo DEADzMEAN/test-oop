@@ -1,5 +1,7 @@
 import person
 import reid_boss
+
+
 print("тестируем ооп")
 
 
