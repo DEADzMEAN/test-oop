@@ -4,10 +4,10 @@ import reid_boss
 print("тестируем ооп")
 
 characters = [
-    person.Warrior(name="Тиран", hp=200, defence=100, speed=20, power=25, attack_speed=50),
-    person.Mage(name="Arhimage", hp=100, defence=50, speed=15, intellect=100, attack_speed=20, power=1),
+    person.Warrior(name="Тиран", hp=200, defence=100, speed=20, power=25, attack_speed=25),
+    person.Mage(name="Arhimage", hp=100, defence=50, speed=15, intellect=150, attack_speed=244, power=1),
     person.Saport(name="Bishop", hp=50, defence=15, speed=15, attack_speed=10, power=1),
-    person.Tank(name='Василий', hp=500, defence=200, speed=18, attack_speed=20, power=29)
+    person.Tank(name='Василий', hp=500, defence=200, speed=18, attack_speed=20, power=9)
 ]
 
 

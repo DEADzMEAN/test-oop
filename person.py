@@ -1,5 +1,3 @@
-
-
 class Character:
     def __init__(self, name, hp, defence, speed, attack_speed, power):
         self.name = name
@@ -13,14 +11,13 @@ class Character:
         print("В акаку!")
 
     def should_leave(self, other) -> bool:
-        return self.hp < (other.get_dpm(self) * other.speed)
+        return self.hp < (other.get_dpm(self) * other.attack_speed)
 
     def can_leave(self, other) -> bool:
         return self.speed >= other.speed
 
     def get_dpm(self, other) -> int:
         return 0
-
 
     def __eq__(self, other):
         if self.name == other.name:
@@ -45,9 +42,9 @@ class Character:
             print(f"Боец {other.name} ебашит по щщам и у {self.name} остаётся {self.hp} HP")
             other.hp -= self.get_dpm(other) * self.attack_speed
             print(self.name, " кидает в ответ плюху и осталось y", other.name, other.hp, " HP")
-            #if self.name == 'Василий':
+            # if self.name == 'Василий':
             #    stronghold(self)
-            #if other.name == 'Василий':
+            # if other.name == 'Василий':
             #    stronghold(other)
         return "подибил боец {}".format(other.name if self.hp <= 0 else self.name)
 
@@ -58,7 +55,6 @@ class Character:
         print('введите трёх персонажей для пати на РБ')
         print('1 - Воин \n 2- Маг \n 3- Сапорт хиллир \n 4- Танк')
         # продолжаю обдумывать это дерьмище
-
 
 
 class Warrior(Character):
@@ -111,13 +107,15 @@ class Saport(Character):
 
     def berserk(self, other):
         print('Хочешь силу берсерка воин? - она сделает тебя сильнее но ты жертвуешь жизнью...')
-        bers = input('Y=1/N=0 ')                     # ебётся с аргументом Yy d 110 строке когда ставлю проверку (надобы указать тип стринг наверно)
+        bers = input \
+            ('Y=1/N=0 ')  # ебётся с аргументом Yy d 110 строке когда ставлю проверку (надобы указать тип стринг наверно)
         if bers == 1 or bers == 0:
             other.hp -= (100 - 15) * other.hp // 100  # ну такой наивный способ вычесть 15%
             print('ты лишился 15% НР')
             other.defence += (100 + 50) * other.defence // 100
             print('Получил +50% к защите')
             other.attack_speed += (100 + 15) * other.attack_speed // 100
+
 
 class Tank(Character):
     def __int__(self, name, hp, defence, speed, attack_speed, power, agression):
@@ -129,7 +127,6 @@ class Tank(Character):
         if self.hp <= (100 - 30) * self.hp // 100:
             self.defence += (100 + 100) * self.hp // 100
             print('Враг обломает об меня зубы! Я ТВЕРДЫНЯ!')
-
 
     def get_dpm(self, other: Character) -> int:
         return self.power / other.defence
