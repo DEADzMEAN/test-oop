@@ -1,16 +1,15 @@
-import time
-import threading
+
 
 class Character:
-    def __init__(self, name, hp, defence, speed, attack_speed, dick=None):
+    def __init__(self, name, hp, defence, speed, attack_speed, power):
         self.name = name
         self.hp = hp
         self.defence = defence
         self.speed = speed
         self.attack_speed = attack_speed
-        self.dick = dick
+        self.power = power
 
-    def _scream(self):
+    def scream(self):
         print("В акаку!")
 
     def should_leave(self, other) -> bool:
@@ -21,6 +20,7 @@ class Character:
 
     def get_dpm(self, other) -> int:
         return 0
+
 
     def __eq__(self, other):
         if self.name == other.name:
@@ -45,12 +45,14 @@ class Character:
             print(f"Боец {other.name} ебашит по щщам и у {self.name} остаётся {self.hp} HP")
             other.hp -= self.get_dpm(other) * self.attack_speed
             print(self.name, " кидает в ответ плюху и осталось y", other.name, other.hp, " HP")
-
+            #if self.name == 'Василий':
+            #    stronghold(self)
+            #if other.name == 'Василий':
+            #    stronghold(other)
         return "подибил боец {}".format(other.name if self.hp <= 0 else self.name)
 
     def __str__(self):
-        return "Character with name: " + self.name + ", dick: " + str(
-            self.dick)  # none эта не стринга! сделай стрингой тогда покажет метод str
+        return "Character with name: " + self.name  # none эта не стринга! сделай стрингой тогда покажет метод str
 
     def party(self):
         print('введите трёх персонажей для пати на РБ')
@@ -60,10 +62,8 @@ class Character:
 
 
 class Warrior(Character):
-    def __init__(self, name, hp, defence, speed, power, attack_speed, dick):
-        Character.__init__(self, name, hp, defence, speed, attack_speed, dick)
-        self.power = power
-        self.dick = dick
+    def __init__(self, name, hp, defence, speed, power, attack_speed):
+        Character.__init__(self, name, hp, defence, speed, attack_speed, power)
 
     def scream(self):
         if self.power > 10:
@@ -79,8 +79,8 @@ class Warrior(Character):
 
 
 class Mage(Character):
-    def __init__(self, name, hp, defence, speed, attack_speed, intellect):
-        Character.__init__(self, name, hp, defence, attack_speed, speed)
+    def __init__(self, name, hp, defence, speed, attack_speed, intellect, power):
+        Character.__init__(self, name, hp, defence, attack_speed, speed, power)
         self.intellect = intellect
 
     def scream(self):
@@ -91,8 +91,8 @@ class Mage(Character):
 
 
 class Saport(Character):
-    def __int__(self, name, hp, defence, speed, attack_speed, hill_power, baff):
-        Character.__init__(self, self, name, hp, defence, attack_speed, speed)
+    def __int__(self, name, hp, defence, speed, attack_speed, hill_power, baff, power):
+        Character.__init__(self, name, hp, defence, attack_speed, speed, power)
         self.hill_power = hill_power
         self.baff = baff
 
@@ -121,7 +121,7 @@ class Saport(Character):
 
 class Tank(Character):
     def __int__(self, name, hp, defence, speed, attack_speed, power, agression):
-        Character.__init__(self, self, name, hp, defence, attack_speed, speed)
+        Character.__init__(self, name, hp, defence, attack_speed, speed, power)
         self.power = power
         self.agression = agression
 
@@ -131,9 +131,5 @@ class Tank(Character):
             print('Враг обломает об меня зубы! Я ТВЕРДЫНЯ!')
 
 
-characters = (
-    Warrior(name="Тиран", hp=200, defence=100, speed=20, power=25, attack_speed=50, dick=11),
-    Mage(name="Arhimage", hp=100, defence=50, speed=15, intellect=100, attack_speed=20),
-    Saport(name="Bishop", hp=50, defence=15, speed=15, attack_speed=10, hill_power=10, baff=10),
-    Tank(name='Василий', hp=500, defence=200, speed=18, attack_speed=20, power=5, agression=1)
-)
+    def get_dpm(self, other: Character) -> int:
+        return self.power / other.defence
