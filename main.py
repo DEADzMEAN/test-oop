@@ -10,6 +10,9 @@ characters = [
     person.Tank(name='Василий', hp=500, defence=200, speed=18, attack_speed=20, power=9)
 ]
 
+rb = [
+    reid_boss.ReidBoss(name="Stone_Golem", hp=1500, defence=500, speed=1, attack_speed=15, skill_name='Power scream', skill=500, power=100)
+]
 
 def checked_input(prompt: str):
     value = int(input(prompt))
@@ -33,7 +36,7 @@ def choice_pvp(choice):
         char2 = characters[second - 1]
         return char1, char2
     if choice == 2:
-        print('Выбери гроков в пати \n Ты можешь выдрать трёх персонажей для борьбы с коварным РБ')
+        print('Выбери игроков в пати \n Ты можешь выдрать трёх персонажей для борьбы с коварным РБ')
         first = checked_input("Выбери бойца №1: ")
         second = checked_input("Выбери бойца №2: ")
         third = checked_input("Выбери бойца №3: ")
@@ -42,7 +45,9 @@ def choice_pvp(choice):
         char3 = characters[third - 1]
         return char1, char2, char3
 
-char1.scream()
+def
+
+choice_pvp(choice).char1.scream()    # да хуй его маму знает. по наитию думаю что так...
 char2.scream()
 print("DPS first to second:", char1.get_dpm(char2))
 print("DPS second to first:", char2.get_dpm(char1))

@@ -20,7 +20,3 @@ class ReidBoss:
             print('5 \n 4 \n 3 \n 2 \n 1 \n _____БУУУУМ____')
 
 
-rb = (
-    ReidBoss(name="Stone_Golem", hp=1500, defence=500, speed=1, attack_speed=15, skill_name='Power scream', skill=500, power=100)
-
-)
