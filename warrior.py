@@ -11,8 +11,6 @@ class Warrior(Character):
         else:
             Character.scream(self)
 
-    def get_dpm(self, other: Character) -> int:
-        return self.power / other.defence
 
     def __str__(self):
         return "Warrior with name: " + self.name

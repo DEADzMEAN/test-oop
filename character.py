@@ -1,5 +1,5 @@
 class Character:
-    def __init__(self, name, hp, defence, speed, attack_speed, power):
+    def __init__(self, name: str, hp: int, defence: int, speed: int, attack_speed: int, power: int):
         self.name = name
         self.hp = hp
         self.defence = defence
@@ -17,7 +17,7 @@ class Character:
         return self.speed >= other.speed
 
     def get_dpm(self, other) -> int:
-        return 0
+        return self.power / other.defence
 
     def __eq__(self, other):
         if self.name == other.name:
