@@ -10,9 +10,9 @@ class Support(Character):
     def scream(self):
         print(">>>накладываю бафы<<<")
 
-    def hill(self, other):
+    def heal(self, other):
         for i in range(2):
-            other.hp += self.hill_power
+            other.hp += self.heal_power
 
     def baf(self, other):
         other.defence += 30
