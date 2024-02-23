@@ -33,5 +33,6 @@ class TestCharacter(unittest.TestCase):
         other: Character = Character(name="Other", hp=101, defence=11, speed=1, attack_speed=11, power=11)
         self.assertFalse(me.fight(other), "Победил бой, так НЕ запланировано")
 
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
