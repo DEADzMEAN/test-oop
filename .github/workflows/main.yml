@@ -1,7 +1,7 @@
-name: demo chek
+name: "PR check"
 on: [merge_group, workflow_dispatch]
 jobs:
-  chek_test:
+  pr_check:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
