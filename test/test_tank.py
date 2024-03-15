@@ -9,5 +9,5 @@ class TestTank(unittest.TestCase):
         other: Tank = Tank(name='Other tank', hp=500, defence=200, speed=18, attack_speed=20, aggression=1, power=9)
         self.assertEqual(me.get_dpm(other), 0.045, "Внезапно не тот дамаг")
 
-#    def test_failed(self):
-#        self.assertTrue(False)
+    def test_failed(self):
+        self.assertTrue(False)
