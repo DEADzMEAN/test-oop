@@ -11,3 +11,6 @@ class TestTank(unittest.TestCase):
 
  #   def test_failed(self):
  #       self.assertTrue(False)
+
+#    def test_failed2(self):
+#        self.assertTrue(False)
