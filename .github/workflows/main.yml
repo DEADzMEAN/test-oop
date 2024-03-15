@@ -1,5 +1,12 @@
 name: "PR check"
-on: [merge_group, workflow_dispatch]
+on: 
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - reopened
+  
 jobs:
   pr_check:
     runs-on: ubuntu-latest
