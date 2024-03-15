@@ -4,11 +4,11 @@ jobs:
   chek_test:
     runs-on: ubuntu-latest
     steps:
-      - name: get repository code
+      - name: Get repository code
         uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v4
-      - name: install application
-        run: npm ci
-      - name: test application
-        run: npm run test
+      - name: Test with pytest
+        run: |
+          pip install pytest
+          pytest test
