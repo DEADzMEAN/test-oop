@@ -20,7 +20,7 @@ jobs:
         run: |
           pip install pytest
           pytest test
-jobs:
+
   flake8-lint:
     runs-on: ubuntu-latest
     steps:
