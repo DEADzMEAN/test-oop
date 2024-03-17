@@ -20,3 +20,29 @@ jobs:
         run: |
           pip install pytest
           pytest test
+      - name: Get repository code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+      - name: Enforce code style (Flake8)
+        run: |
+          source venv/bin/activate
+          flake8 ${{ inputs.ENFORCE_FLAKE8 && '' || '--exit-zero' }}
+      - name: Lint code
+        run: |
+          source venv/bin/activate
+          pylint **/*.py  # ... Some more conditional arguments
+      - name: Send report to CodeClimate
+        uses: paambaati/codeclimate-action@v3.0.0
+        if: ${{ inputs.ENABLE_CODE_CLIMATE }}
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageLocations: |
+            ${{github.workspace}}/coverage.xml:coverage.py
+      - name: SonarCloud scanner
+        uses: sonarsource/sonarcloud-github-action@master
+        if: ${{ inputs.ENABLE_SONAR }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
