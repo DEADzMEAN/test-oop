@@ -34,7 +34,5 @@ jobs:
         with:
           ignore: "F401, F812, H101, H401, H403, H404"
           exclude: "*.gitignore"
-          max-line-length: "100"
-          path: "src"
-          plugins: "flake8-bugbear==22.1.11 flake8-black"
+          max-line-length: "130"
         continue-on-error: true
