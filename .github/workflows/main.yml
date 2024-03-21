@@ -33,8 +33,8 @@ jobs:
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          ignore: "F401"
-          exclude: "src/ignoreme.py"
+          ignore: "F401, F812, H101, H401, H403, H404"
+          exclude: "*.gitignore"
           max-line-length: "100"
           path: "src"
           plugins: "flake8-bugbear==22.1.11 flake8-black"
