@@ -20,3 +20,8 @@ jobs:
         run: |
           pip install pytest
           pytest test
+      - name: Lint with Ruff
+        run: |
+          pip install ruff
+          ruff --output-format=github .
+        continue-on-error: true
