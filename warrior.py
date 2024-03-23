@@ -11,6 +11,5 @@ class Warrior(Character):
         else:
             Character.scream(self)
 
-
     def __str__(self):
         return "Warrior with name: " + self.name

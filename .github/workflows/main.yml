@@ -9,40 +9,30 @@ on:
       - synchronize
   
 jobs:
-  pr_check:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
         uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
       - name: Test with pytest
         run: |
           pip install pytest
           pytest test
-  flake8-lint:
+
+  run-flake8-linter:
     runs-on: ubuntu-latest
     steps:
       - name: Check out source repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Set up Python environment
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
-          ignore: "F401, F812, H101, H401, H403, H404"
-          exclude: "*.gitignore"
           max-line-length: "130"
-        continue-on-error: true
-  koverge-berme:
-    runs-on: ubuntu-latest
-    steps:
-    - name: npm install, make test-coverage
-      run: |
-        npm install
-        make test-coverage
-
-    - name: Coveralls
-      uses: coverallsapp/github-action@v2
