@@ -36,3 +36,13 @@ jobs:
           exclude: "*.gitignore"
           max-line-length: "130"
         continue-on-error: true
+  koverge-berme:
+    runs-on: ubuntu-latest
+    steps:
+    - name: npm install, make test-coverage
+      run: |
+        npm install
+        make test-coverage
+
+    - name: Coveralls
+      uses: coverallsapp/github-action@v2
