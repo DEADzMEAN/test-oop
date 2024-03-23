@@ -9,7 +9,7 @@ on:
       - synchronize
   
 jobs:
-  pr_check:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
       - name: Get repository code
@@ -21,7 +21,7 @@ jobs:
           pip install pytest
           pytest test
 
-  flake8-lint:
+  run-flake8-linter:
     runs-on: ubuntu-latest
     steps:
       - name: Check out source repository
