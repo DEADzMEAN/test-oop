@@ -18,10 +18,12 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Test with pytest
+      - name: Run tests
         run: |
           pip install pytest
-          pytest test
+          coverage run
+      - name: Tests report
+        run: coverage report
 
   run-flake8-linter:
     runs-on: ubuntu-latest
