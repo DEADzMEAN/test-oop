@@ -1,5 +1,5 @@
 from warrior import Warrior
-from mage import Mage
+from core.mage import Mage
 from support import Support
 from tank import Tank
 

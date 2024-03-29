@@ -1,4 +1,4 @@
-from support import Support
+from core.support import Support
 import unittest
 
 
