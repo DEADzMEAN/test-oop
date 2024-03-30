@@ -49,6 +49,6 @@ jobs:
       - name: Install coverage
         run: pip install coverage pytest
       - name: Run tests
-        run: coverage run --source=./test -m unittest discover -s ./
+        run: coverage run -m unittest discover
       - name: Tests report
         run: coverage report
