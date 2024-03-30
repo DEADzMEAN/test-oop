@@ -1,4 +1,4 @@
-from core.tank import Tank
+from src.tank import Tank
 import unittest
 
 me: Tank = Tank(name='Василий', hp=500, defence=200, speed=18, attack_speed=20, aggression=1, power=9)

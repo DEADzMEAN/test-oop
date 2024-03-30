@@ -1,4 +1,4 @@
-from core.character import Character
+from src.character import Character
 import unittest
 
 
