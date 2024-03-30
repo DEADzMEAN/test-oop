@@ -47,6 +47,6 @@ jobs:
         with:
           python-version: "3.11"
       - name: Run tests
-        run: coverage run src/tests.py
+        run: coverage run
       - name: Tests report
         run: coverage report
