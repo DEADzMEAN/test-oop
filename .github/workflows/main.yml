@@ -47,8 +47,8 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install coverage
-        run: python3 -m pip install coverage
+        run: pip install coverage
       - name: Run tests
-        run: coverage run test/*.py
+        run: coverage run
       - name: Tests report
         run: coverage report
