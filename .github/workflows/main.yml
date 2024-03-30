@@ -36,3 +36,19 @@ jobs:
         uses: py-actions/flake8@v2
         with:
           max-line-length: "130"
+
+  coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Collect coverage
+        run: | 
+          pip install coverage pytest
+          coverage run --source=./src -m unittest discover 
+      - name: Coverage report
+        run: coverage report
