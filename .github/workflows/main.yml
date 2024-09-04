@@ -39,16 +39,30 @@ jobs:
 
   coverage:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python:
+          - '3.11'
+        coverage:
+          - '7.5'
+    name: Python ${{ matrix.python }} on coverage ${{ matrix.coverage }}
     steps:
-      - name: Get repository code
-        uses: actions/checkout@v4
-      - name: Set up Python
+      - uses: actions/checkout@v4
+      - name: Deploy Badges
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Update badges [skip ci]"
+          branch: gh-pages
+          skip_fetch: true
+          skip_checkout: true
+          
+      - name: Setup python ${{ matrix.python }}
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python }}
       - name: Collect coverage
         run: | 
           pip install coverage pytest
-          coverage run --source=./src -m unittest discover 
-      - name: Coverage report
-        run: coverage report
+          coverage run --source=./src -m unittest discover
+      - name: Make coverage JSON
+        run: coverage json && ls -la
