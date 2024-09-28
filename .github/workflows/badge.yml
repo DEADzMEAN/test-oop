@@ -31,7 +31,7 @@ jobs:
       - name: run genbadge
         run: |
           pip install genbadge[all]
-          genbadge coverage
+          genbadge coverage --output-file .github/badges/coverage.svg
 
       - name: Commit and push the badge (if it changed)
         uses: EndBug/add-and-commit@v9
