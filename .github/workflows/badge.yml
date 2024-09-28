@@ -26,7 +26,7 @@ jobs:
           workflow: main.yml
           pr: ${{github.event.pull_request.number}}
           name: coverage-report
-          path: ./
+          path: reports/coverage
 
       - name: run genbadge
         run: |
