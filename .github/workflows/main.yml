@@ -50,6 +50,8 @@ jobs:
         run: | 
           pip install coverage pytest
           coverage run --source=./src -m unittest discover 
+          coverage xml -o coverage.xml
+
       - name: Coverage report
         run: coverage report
 
@@ -57,4 +59,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: ./
+          path: coverage.xml

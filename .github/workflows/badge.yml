@@ -25,8 +25,8 @@ jobs:
           github_token: ${{secrets.GITHUB_TOKEN}}
           workflow: main.yml
           pr: ${{github.event.pull_request.number}}
-          name: jacoco-report
-          path: target/site/jacoco/
+          name: coverage-report
+          path: ./
 
       - name: run genbadge
         run: |
