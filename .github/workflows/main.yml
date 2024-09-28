@@ -28,10 +28,12 @@ jobs:
     steps:
       - name: Check out source repository
         uses: actions/checkout@v4
+
       - name: Set up Python environment
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
       - name: flake8 Lint
         uses: py-actions/flake8@v2
         with:
@@ -47,19 +49,11 @@ jobs:
           - '7.5'
     name: Python ${{ matrix.python }} on coverage ${{ matrix.coverage }}
     steps:
-      - uses: actions/checkout@v4
-      - name: Deploy Badges
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: "Update badges [skip ci]"
-          branch: gh-pages
-          skip_fetch: true
-          skip_checkout: true
-          
       - name: Setup python ${{ matrix.python }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
+
       - name: Collect coverage
         run: | 
           pip install coverage pytest
