@@ -36,10 +36,16 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: flake8 Lint
-        uses: py-actions/flake8@v2
-        with:
-          max-line-length: "130"
+#      - name: flake8 Lint
+#        uses: py-actions/flake8@v2
+#        with:
+#          max-line-length: "130"
+      - name: flake8 report
+        run: |
+          python3.11 -m pip install flake8
+          python3.11 -m flake8
+          flake8 --extend-ignore E501 ./
+          flake8 -vv --output-file=flake8.txt ./
 
   coverage:
     runs-on: ubuntu-latest
@@ -72,4 +78,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: coverage.xml
+          path: coverage.xml, flake8.txt
