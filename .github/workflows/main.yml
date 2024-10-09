@@ -43,7 +43,7 @@ jobs:
       - name: flake8 report
         run: |
           python3.11 -m pip install flake8
-          flake8 --extend-ignore E501 ./ -vv --output-file=flake8stats.txt ./reports/flake8/ --exit-zero
+          flake8 <src_folder> --exit-zero --extend-ignore E501 --format=html --htmldir ./reports/flake8 --statistics --tee --output-file flake8stats.txt
           
       - name: Upload flake8 report
         uses: actions/upload-artifact@v4
