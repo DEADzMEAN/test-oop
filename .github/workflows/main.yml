@@ -43,7 +43,7 @@ jobs:
       - name: flake8 report
         run: |
           python3.11 -m pip install flake8
-          flake8 --ignore=E501 ./
+          flake8  ./
           flake8 -vv --output-file=flake8.txt ./
 
   coverage:
