@@ -44,13 +44,14 @@ jobs:
         run: |
           python3.11 -m pip install flake8
           pip install flake8-html
-          flake8 --exit-zero --extend-ignore E501 --format=html --htmldir ./reports/flake8 --statistics --tee --output-file flake8stats.txt
+          flake8 flake8 -vv --output-file=flake8.txt ./reports/flake8/
+          ls -R
           
       - name: Upload flake8 report
         uses: actions/upload-artifact@v4
         with:
           name: flake8stats.txt
-          path: ./reports/flake8/flake8stats.txt
+          path: ./reports/flake8/
 
 
   coverage:
