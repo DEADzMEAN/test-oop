@@ -43,7 +43,7 @@ jobs:
       - name: flake8 report
         run: |
           python3.11 -m pip install flake8
-          flake8 flake8 -vv --output-file=flake8.txt ./reports/flake8/
+          flake8 -vv --output-file=flake8.txt ./reports/flake8/
       - name: flake8 art ls
         run: |
           ls -R
