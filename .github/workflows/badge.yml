@@ -18,7 +18,7 @@ jobs:
         with:
           ref: gh-pages
 
-      - name: Download artifact
+      - name: Download artifact coverage
         id: download
         uses: dawidd6/action-download-artifact@v6
         with:
@@ -50,7 +50,7 @@ jobs:
         with:
           ref: gh-pages
           
-      - name: Download artifact
+      - name: Download artifact flake8
         id: download
         uses: dawidd6/action-download-artifact@v6
         with:
