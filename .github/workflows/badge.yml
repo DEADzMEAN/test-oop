@@ -10,7 +10,7 @@ on:
 
 jobs:
   badges-coverage:
-    if: ${{ github.event.pull_request.merged }}
+    #if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -42,7 +42,7 @@ jobs:
           add: '*.svg'
           
   badges-flake8:
-    if: ${{ github.event.pull_request.merged }}
+    #if: ${{ github.event.pull_request.merged }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
