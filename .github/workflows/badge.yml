@@ -2,11 +2,11 @@ name: Generate coverage badges
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: 
-      - "master"
-    types: 
-      - closed
+  #pull_request:
+   # branches: 
+   #   - "master"
+   # types: 
+    #  - closed
 
 jobs:
   badges-coverage:
