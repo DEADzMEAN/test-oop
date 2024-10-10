@@ -19,7 +19,7 @@ jobs:
           ref: gh-pages
 
       - name: Download artifact coverage
-        id: download
+        id: download1
         uses: dawidd6/action-download-artifact@v6
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
@@ -51,7 +51,7 @@ jobs:
           ref: gh-pages
           
       - name: Download artifact flake8
-        id: download
+        id: download2
         uses: dawidd6/action-download-artifact@v6
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
