@@ -36,7 +36,7 @@ jobs:
           workflow: main.yml
           pr: ${{github.event.pull_request.number}}
           name: flake8stats.txt
-          path: reports/flake8stats
+          path: reports/flake8
 
       - name: Run genbadge
         run: |
