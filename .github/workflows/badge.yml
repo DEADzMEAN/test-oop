@@ -2,11 +2,11 @@ name: Generate coverage badges
 
 on:
   workflow_dispatch:
-  #pull_request:
-   # branches: 
-   #   - "master"
-   # types: 
-    #  - closed
+  pull_request:
+    branches: 
+      - "master"
+    types: 
+      - closed
 
 jobs:
   badges-coverage:
@@ -18,8 +18,8 @@ jobs:
         with:
           ref: gh-pages
 
-      - name: Download artifact coverage
-        id: download1
+      - name: Download coverage artifact
+        id: download-coverage
         uses: dawidd6/action-download-artifact@v6
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
@@ -28,30 +28,8 @@ jobs:
           name: coverage-report
           path: reports/coverage
 
-
-      - name: run genbadge
-        run: |
-          pip install genbadge[all]
-          genbadge coverage --output-file .github/badges/coverage.svg
-
-      - name: Commit and push the badge (if it changed)
-        uses: EndBug/add-and-commit@v9
-        with:
-          default_author: github_actions
-          message: 'commit badge'
-          add: '*.svg'
-          
-  badges-flake8:
-    #if: ${{ github.event.pull_request.merged }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        name: Checkout repository
-        with:
-          ref: gh-pages
-          
-      - name: Download artifact flake8
-        id: download2
+      - name: Download flake8 artifact
+        id: download-flake
         uses: dawidd6/action-download-artifact@v6
         with:
           github_token: ${{secrets.GITHUB_TOKEN}}
@@ -59,21 +37,16 @@ jobs:
           pr: ${{github.event.pull_request.number}}
           name: flake8stats.txt
           path: flake8stats.txt
-          
-      - name: flake8 art ls
-        run: |
-          ls -R
 
-      - name: run genbadge
+      - name: Run genbadge
         run: |
           pip install genbadge[all]
+          genbadge coverage --output-file .github/badges/coverage.svg
           genbadge flake8 --output-file .github/badges/flake8stats.svg
 
-      - name: Commit and push the badge (if it changed)
+      - name: Commit and push the badges
         uses: EndBug/add-and-commit@v9
         with:
           default_author: github_actions
-          message: 'commit badge'
+          message: 'commit badges'
           add: '*.svg'
-
-          
