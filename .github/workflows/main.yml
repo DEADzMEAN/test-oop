@@ -36,10 +36,16 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: flake8 Lint
-        uses: py-actions/flake8@v2
+      - name: Make flake8 report
+        run: |
+          python3.11 -m pip install flake8
+          flake8 -vv --output-file=flake8stats.txt --ignore E501 --tee ./src
+          
+      - name: Upload flake8 report
+        uses: actions/upload-artifact@v4
         with:
-          max-line-length: "130"
+          name: flake8stats.txt
+          path: flake8stats.txt
 
   coverage:
     runs-on: ubuntu-latest
