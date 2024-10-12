@@ -36,10 +36,11 @@ jobs:
           workflow: main.yml
           pr: ${{github.event.pull_request.number}}
           name: flake8stats.txt
-          path: flake8stats.txt
+          path: reports/flake8stats
 
       - name: Run genbadge
         run: |
+          ls -R
           pip install genbadge[all]
           genbadge coverage --output-file .github/badges/coverage.svg
           genbadge flake8 --output-file .github/badges/flake8stats.svg
