@@ -2,6 +2,8 @@
 
 import logging
 import argparse
+import os
+import glob
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s SymbolsChecker %(levelname)s %(message)s")
 
@@ -28,17 +30,21 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     logging.info(f"Input file: {args.input_file}")
-
+    path = '.github/workflows'
     valid: bool = True
-    with open(args.input_file, 'r', encoding='UTF-8') as f:
-        index: int = 0
-        for line in f:
-            index += 1
-            if not is_line_valid(line.rstrip(), index):
-                valid = False
+    for filename in glob.glob(os.path.join(path, '**/*.yml')):   #чтобы не забыть , recursive=True не дружит с чётким путём но я оставил **/*yml
+        with open(os.path.join(os.getcwd(), filename), 'r', encoding='UTF-8') as f:
+            index: int = 0
+            for line in f:
+                index += 1
+                if not is_line_valid(line.rstrip(), index):
+                    valid = False
 
     if not valid:
         logging.error("Errors found, consider checking your code")
         exit(1)
 
     logging.info("No errors found, you're breathtaking!")
+#    with open(args.input_file, 'r', encoding='UTF-8') as f:
+
+
