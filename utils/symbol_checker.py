@@ -32,8 +32,8 @@ if __name__ == "__main__":
     logging.info(f"Input file: {args.input_file}")
     path = '.github/workflows'
     valid: bool = True
-    for filename in glob.glob(os.path.join(path, '**/*.yml')):   #чтобы не забыть , recursive=True не дружит с чётким путём но я оставил **/*yml
-        with open(os.path.join(os.getcwd(), filename), 'r', encoding='UTF-8') as f:
+    for input_file in glob.glob(os.path.join(path, '**/*.yml')):   #чтобы не забыть , recursive=True не дружит с чётким путём но я оставил **/*yml
+        with open(os.path.join(os.getcwd(), input_file), 'r', encoding='UTF-8') as f:
             index: int = 0
             for line in f:
                 index += 1
