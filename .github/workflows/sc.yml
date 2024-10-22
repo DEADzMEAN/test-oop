@@ -22,4 +22,4 @@ jobs:
 
       - name: Check with yml
         run: |
-         python ./utils/symbol_checker.py --input_dir .github/workflows --mask "*.yml" --input_file
+         python ./utils/symbol_checker.py --input_dir .github/workflows --mask "*.yml"

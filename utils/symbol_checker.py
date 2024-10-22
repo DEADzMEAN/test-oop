@@ -25,7 +25,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Config files checker")
     parser.add_argument("--input_dir=/", type=str, help="Input directory", required=True)
     parser.add_argument("--mask=*.yml", type=str, help="Input mask", required=True)
-    parser.add_argument("--input_file", type=str, help="File name", required=True)
 
     # TODO: Replace --input_file with --input_dir, --mask, --recursive to do it like:
     # TODO: symbol_checker.py --input_dir=/.github/workflows --mask=*.yml --recursive
